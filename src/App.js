@@ -17,12 +17,13 @@ function App() {
 
 useEffect(() => {
   const marvelApi = async () => {
-         const value = await axios.get(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${char}&ts=1&apikey=${apiKey}&hash=${hash}`)
+         await axios.get(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${char}&ts=1&apikey=${apiKey}&hash=${hash}`)
          .then(res => res.data.data.results)
          .then(res => setAddChar(res))
          .catch((err) => {
            console.log('error', err);
-         });
+         })
+        ;
   }
   marvelApi(); 
 },[char]);
